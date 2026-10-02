@@ -52,11 +52,16 @@ const config = {
         ],
     },
     plugins: [
-        ...(isDevelopment ? [] : [new MiniCssExtractPlugin()]),
+    ...(isDevelopment ? [] : [new MiniCssExtractPlugin()]),
 
-        new BitableAppWebpackPlugin({
-            // open: true, // 控制是否自动打开多维表格
-        }),
+    ...(isDevelopment
+        ? [
+            new BitableAppWebpackPlugin({
+                // open: true, // 控制是否自动打开多维表格
+            }),
+        ]
+        : []),
+
 
         new HtmlWebpackPlugin({
             filename: "index.html",
